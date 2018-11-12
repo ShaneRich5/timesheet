@@ -8,12 +8,14 @@
                     <div class="card-header">Edit Client</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('clients.update') }}">
+                        <form method="POST" action="{{ route('clients.update', $client->id) }}">
                             @include('clients.form')
+                            {{ method_field('PUT') }}
                         </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
 @endsection

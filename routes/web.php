@@ -19,3 +19,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('clients', 'ClientController');
+
+Route::group(['namespace' => 'Api', 'prefix' => 'api'], function() {
+    Route::get('clients', 'ClientController@index');
+    Route::resource('tasks', 'TaskController');
+});

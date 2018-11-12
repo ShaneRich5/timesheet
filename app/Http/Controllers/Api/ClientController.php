@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use App\Client;
-use App\Http\Requests\NewClientRequest;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class ClientController extends Controller
 {
@@ -23,7 +23,7 @@ class ClientController extends Controller
     public function index()
     {
         $clients = $this->client->all();
-        return view('clients.index', ['clients' => $clients]);
+        return response()->json(['clients' => $clients]);
     }
 
     /**
@@ -33,21 +33,18 @@ class ClientController extends Controller
      */
     public function create()
     {
-        return view('clients.create');
+        //
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param NewClientRequest $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(NewClientRequest $request)
+    public function store(Request $request)
     {
-        $meta = ['created_by' => $request->user()->id];
-        $data = array_merge($request->all(), $meta);
-        $client = $this->client->create($data);
-        return redirect()->route('clients.show', $client->id);
+        //
     }
 
     /**
@@ -58,7 +55,7 @@ class ClientController extends Controller
      */
     public function show(Client $client)
     {
-        return view('clients.show', compact('client'));
+        //
     }
 
     /**
@@ -69,7 +66,7 @@ class ClientController extends Controller
      */
     public function edit(Client $client)
     {
-        return view('clients.edit', compact('client'));
+        //
     }
 
     /**
@@ -81,8 +78,7 @@ class ClientController extends Controller
      */
     public function update(Request $request, Client $client)
     {
-        $client->update($request->all());
-        return redirect()->route('clients.show', $client->id);
+        //
     }
 
     /**

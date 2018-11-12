@@ -14,5 +14,6 @@ require('./bootstrap');
  */
 
 require('./components/Example');
+require('./components/TaskContainer');
 
-require('./components/ClientForm');
+

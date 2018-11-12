@@ -1,5 +1,6 @@
 
 window._ = require('lodash');
+window.humps = require('humps');
 window.Popper = require('popper.js').default;
 
 /**
@@ -37,6 +38,21 @@ if (token) {
 } else {
     console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 }
+
+// remap keys from incoming network requests
+const transformStream = (transformer, stream) => {
+    const { data } = stream;
+    stream.data = transformer(data);
+    return stream;
+};
+
+window.axios.interceptors.request.use(
+    config => transformStream(humps.decamelizeKeys, config),
+    error => Promise.reject(error));
+
+window.axios.interceptors.response.use(
+    response => transformStream(humps.camelizeKeys, response),
+    error => Promise.reject(error));
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
