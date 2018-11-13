@@ -10477,3 +10477,16 @@ a.text-dark:focus {
   width: 100%;
 }
 
+.table {
+  background: white;
+}
+
+.card-header.card-actions {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+

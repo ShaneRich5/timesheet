@@ -17,7 +17,13 @@
                                     <h5 class="mb-1">{{ $client->name }}</h5>
                                     <small>{{ $client->created_at->diffForHumans() }}</small>
                                 </div>
-                                <p class="mb-1">{{ $client->description ?? 'No description' }}</p>
+                                <div class="d-flex w-100 justify-content-between">
+                                    <p class="mb-1">{{ $client->description ?? 'No description' }}</p>
+                                    <small>
+                                        Manager<br/>
+                                        {{ $client->user->full_name }}
+                                    </small>
+                                </div>
                             </a>
                         @empty
                             <p>No clients</p>

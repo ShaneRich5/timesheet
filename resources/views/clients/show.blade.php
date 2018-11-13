@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header" style="display: flex; justify-content: space-between;">
+                <div class="card-header card-actions">
                     {{ $client->name }}
                     <a href="{{ route('clients.edit', $client->id) }}">Edit</a>
                 </div>
@@ -27,6 +27,8 @@
                             </div>
                         </div>
                         <div class="col-md-8 col-sm-12">
+                            <small>Manager</small>
+                            <div>{{ $client->createdBy->full_name }}</div>
                             <small>Description</small>
                             <div>{{ $client->description ?? 'No description' }}</div>
                         </div>
