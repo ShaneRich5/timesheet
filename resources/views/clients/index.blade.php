@@ -20,8 +20,7 @@
                                 <div class="d-flex w-100 justify-content-between">
                                     <p class="mb-1">{{ $client->description ?? 'No description' }}</p>
                                     <small>
-                                        Manager<br/>
-                                        {{ $client->user->full_name }}
+                                        Managed by {{ $client->createdBy->full_name }}
                                     </small>
                                 </div>
                             </a>
